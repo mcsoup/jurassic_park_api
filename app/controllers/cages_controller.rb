@@ -1,64 +1,35 @@
 class CagesController < ApplicationController
   before_action :set_cage, only: [:show, :edit, :update, :destroy]
 
-  # GET /cages
-  # GET /cages.json
   def index
-    @cages = Cage.all
+    respond_with Cage.all
   end
 
-  # GET /cages/1
-  # GET /cages/1.json
   def show
+    respond_with @cage
   end
 
-  # GET /cages/new
-  def new
-    @cage = Cage.new
-  end
-
-  # GET /cages/1/edit
-  def edit
-  end
-
-  # POST /cages
-  # POST /cages.json
   def create
     @cage = Cage.new(cage_params)
 
-    respond_to do |format|
-      if @cage.save
-        format.html { redirect_to @cage, notice: 'Cage was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @cage }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @cage.errors, status: :unprocessable_entity }
-      end
+    if @cage.save
+      respond_with @cage
+    else
+      render json: @cage.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /cages/1
-  # PATCH/PUT /cages/1.json
   def update
-    respond_to do |format|
-      if @cage.update(cage_params)
-        format.html { redirect_to @cage, notice: 'Cage was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @cage.errors, status: :unprocessable_entity }
-      end
+    if @cage.update(cage_params)
+      head :no_content
+    else
+      render json: @cage.errors, status: :unprocessable_entity 
     end
   end
 
-  # DELETE /cages/1
-  # DELETE /cages/1.json
   def destroy
     @cage.destroy
-    respond_to do |format|
-      format.html { redirect_to cages_url }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private

@@ -12,9 +12,9 @@ class DinosaursControllerTest < ActionController::TestCase
   end
 
   test "should create dinosaur" do
-    species = Species.create label: 'Triceratops', diet: 'Herbivore'
+    species = Species.create label: 'Triceratops'
     assert_difference('Dinosaur.count') do
-      post :create, dinosaur: { diet: 'Herbivore', name: 'Sara', species: species }, format: :json
+      post :create, dinosaur: { diet: 'Herbivore', name: 'Sara', species: species.label }, format: :json
       assert_response :success
     end
   end
@@ -25,7 +25,7 @@ class DinosaursControllerTest < ActionController::TestCase
   end
 
   test "should update dinosaur" do
-    patch :update, {id: @dinosaur, dinosaur: { diet: @dinosaur.diet, name: @dinosaur.name, species: @dinosaur.species }}, format: :json
+    patch :update, {id: @dinosaur, dinosaur: { diet: @dinosaur.diet, name: @dinosaur.name, species_id: @dinosaur.species_id }}, format: :json
     assert_response :success
   end
 

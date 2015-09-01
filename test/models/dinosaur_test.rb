@@ -1,10 +1,10 @@
 require 'test_helper'
 
 describe Dinosaur do
-  let(:trex) {Species.create label: 'Tyrannosaurus', diet: 'Carnivore'}
+  let(:trex) {Species.create label: 'Tyrannosaurus'}
   let(:carnivore1) {Carnivore.create name: 'Rex', species: trex}
   let(:carnivore2) {Carnivore.create name: 'Rexy', species: trex}
-  let(:trike) {Species.create label: 'Triceratops', diet: 'Herbivore'}
+  let(:trike) {Species.create label: 'Triceratops'}
   let(:herbivore) {Herbivore.create name: 'Sara', species: trike}
   let(:herbivore) {Herbivore.create name: 'Sarah', species: trike}
 

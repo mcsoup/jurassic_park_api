@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  species: MyString
-  diet: MyString
+  species_id: 1 
+  diet: Herbivore
 
 two:
   name: MyString
-  species: MyString
-  diet: MyString
+  species_id: 2
+  diet: Carnivore

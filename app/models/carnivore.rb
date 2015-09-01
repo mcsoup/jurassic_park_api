@@ -1,0 +1,2 @@
+class Carnivore < Dinosaur
+end

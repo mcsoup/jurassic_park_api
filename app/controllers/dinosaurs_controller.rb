@@ -44,7 +44,7 @@ class DinosaursController < ApplicationController
         if params[:dinosaur][:diet]
           @species = Species.find_or_create_by(species_params)
         else
-          @species = Species.find(params[:dinosaur][:species])
+          @species = Species.find_by(label: params[:dinosaur][:species])
         end
         params[:dinosaur][:species_id] = @species.id
       end

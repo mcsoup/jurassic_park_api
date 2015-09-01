@@ -1,14 +1,13 @@
 class Dinosaur < ActiveRecord::Base
   validates :name, presence: true
   validates :species_id, presence: true
-  validates :diet, presence: true
   validate :valid_cage?
   
   belongs_to :cage
   belongs_to :species
 
   self.inheritance_column = :diet
-
+  after_save :assign_diet, :if => ->(d) { d.diet.nil?}
   before_save :update_cage, :if => ->(d) { !d.new_record? && d.cage_id_changed? }
  
   #scope
@@ -25,6 +24,10 @@ class Dinosaur < ActiveRecord::Base
   end
 
 private
+  def assign_diet
+    self.update diet: species.diet
+  end
+
   def update_cage
     Cage.decrement_counter(:contained, self.cage_id_was)
     Cage.increment_counter(:contained, self.cage_id)

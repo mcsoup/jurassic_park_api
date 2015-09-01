@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901224749) do
+ActiveRecord::Schema.define(version: 20150901231403) do
 
   create_table "cages", force: true do |t|
     t.integer  "max_capacity"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20150901224749) do
 
   create_table "species", force: true do |t|
     t.string   "label"
+    t.string   "diet"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "diet"
   end
 
 end

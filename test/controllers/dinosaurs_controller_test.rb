@@ -12,10 +12,11 @@ class DinosaursControllerTest < ActionController::TestCase
   end
 
   test "should create dinosaur" do
-    species = Species.create label: 'Triceratops'
+    species = Species.create label: 'Triceratops', diet: 'Herbivore'
     assert_difference('Dinosaur.count') do
-      post :create, dinosaur: { diet: 'Herbivore', name: 'Sara', species: species.label }, format: :json
+      post :create, dinosaur: { name: 'Sara', species: species.label }, format: :json
       assert_response :success
+      assert_equal Dinosaur.last.diet, 'Herbivore' 
     end
   end
 

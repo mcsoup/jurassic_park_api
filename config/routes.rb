@@ -1,7 +1,11 @@
 JurassicParkApi::Application.routes.draw do
-  resources :dinosaurs
+  
+  resources :dinosaurs, defaults: { format: :json }
+  resources :herbivores, controller: 'dinosaurs', diet: 'Herbivore', :defaults => { :format => :json }
+  resources :carnivores, controller: 'dinosaurs', diet: 'Carnivore', :defaults => { :format => :json }
+  root 'dinosaurs#index', defaults: { format: :json }
 
-  resources :cages
+  resources :cages, defaults: { format: :json }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

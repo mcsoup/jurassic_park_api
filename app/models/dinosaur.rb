@@ -20,7 +20,7 @@ class Dinosaur < ActiveRecord::Base
   end
 
   def valid_cage?
-    errors.add(:power_down, "Cage Power is Down") unless cage.nil? or cage.power
+    errors.add(:power_down, "Cage Power is Down") unless cage.nil? or cage.power=='ACTIVE'
     errors.add(:over_capacity, "Cage Max Capacity has been reached") unless cage.nil? or cage.contained < cage.max_capacity 
   end
 

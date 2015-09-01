@@ -9,7 +9,7 @@ describe Carnivore do
 
   describe "valid_cage?" do
     before do
-      @cage = Cage.create(max_capacity: 10, power: true)
+      @cage = Cage.create(max_capacity: 10, power: 'ACTIVE')
       @carnivore = carnivore1
       @carnivore2 = carnivore2
       @carnivore3 = carnivore3

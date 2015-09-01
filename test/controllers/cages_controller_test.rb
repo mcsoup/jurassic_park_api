@@ -12,7 +12,7 @@ class CagesControllerTest < ActionController::TestCase
 
   test "should create cage" do
     assert_difference('Cage.count') do
-      post :create, cage: { contained: @cage.contained, max_capacity: @cage.max_capacity, power: @cage.power }, format: :json
+      post :create, cage: { contained: @cage.contained, max_capacity: @cage.max_capacity, power: 'ACTIVE' }, format: :json
       assert_response :success
     end
   end
@@ -23,7 +23,7 @@ class CagesControllerTest < ActionController::TestCase
   end
 
   test "should update cage" do
-    patch :update, {id: @cage, cage: { contained: @cage.contained, max_capacity: @cage.max_capacity, power: @cage.power }}, format: :json
+    patch :update, {id: @cage, cage: { contained: @cage.contained, max_capacity: @cage.max_capacity, power: 'ACTIVE' }}, format: :json
     assert_response :success
   end
 

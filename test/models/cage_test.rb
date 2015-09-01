@@ -11,7 +11,7 @@ describe Cage do
     end
     
     it "should be valid if there are no dinosaurs" do
-      @cage.power = false
+      @cage.power = 'DOWN'
       assert @cage.valid?
     end
 

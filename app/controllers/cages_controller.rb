@@ -2,7 +2,7 @@ class CagesController < ApplicationController
   before_action :set_cage, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_with Cage.all
+    respond_with Cage.search(params[:q]).result
   end
 
   def show

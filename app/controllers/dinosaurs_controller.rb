@@ -2,7 +2,8 @@ class DinosaursController < ApplicationController
   before_action :set_dinosaur, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_with Dinosaur.all
+    @dinosaurs = params[:cage_id] ? Cage.find(params[:cage_id]).dinosaurs : Dinosaur.all
+    respond_with @dinosaurs.search(params[:q]).result
   end
 
   def show
@@ -40,9 +41,17 @@ class DinosaursController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def dinosaur_params
       if params[:dinosaur][:species]
-        @species = Species.find_or_create_by(label: params[:dinosaur][:species])
+        if params[:dinosaur][:diet]
+          @species = Species.find_or_create_by(species_params)
+        else
+          @species = Species.find(params[:dinosaur][:species])
+        end
         params[:dinosaur][:species_id] = @species.id
       end
       params.require(:dinosaur).permit(:name, :diet, :cage_id, :species_id)
+    end
+
+    def species_params
+      {diet: params[:dinosaur][:diet], label:params[:dinosaur][:species]} 
     end
 end

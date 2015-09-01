@@ -16,7 +16,7 @@ describe Dinosaur do
 
   describe "counter_cache" do
     before do
-      @cage = Cage.create(max_capacity: 10, power: true)
+      @cage = Cage.create(max_capacity: 10, power: 'ACTIVE')
       @carnivore = carnivore1
     end
 
@@ -37,7 +37,7 @@ describe Dinosaur do
 
   describe "valid_cage?" do
     before do
-      @cage = Cage.create(max_capacity: 10, power: true)
+      @cage = Cage.create(max_capacity: 10, power: 'ACTIVE')
       @carnivore = carnivore1
     end
 
@@ -48,7 +48,7 @@ describe Dinosaur do
 
     describe  "should be invalid" do
       it "when cage power is down" do
-        @cage.update power: false
+        @cage.update power: 'DOWN'
         @carnivore.cage = @cage
         refute @carnivore.valid?
       end

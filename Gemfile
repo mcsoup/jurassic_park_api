@@ -33,3 +33,4 @@ gem "nifty-generators"
 # gem 'debugger', group: [:development, :test]
 
 gem "mocha", group: :test
+gem "ransack"

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901213332) do
+ActiveRecord::Schema.define(version: 20150901224749) do
 
   create_table "cages", force: true do |t|
     t.integer  "max_capacity"
-    t.boolean  "power",        default: false
+    t.string   "power",        default: "f"
     t.integer  "contained",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150901213332) do
     t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "diet"
   end
 
 end

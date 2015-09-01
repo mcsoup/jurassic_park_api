@@ -7,5 +7,8 @@ class CreateDinosaurs < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :dinosaurs, :diet
+    add_index :dinosaurs, :species
   end
 end
